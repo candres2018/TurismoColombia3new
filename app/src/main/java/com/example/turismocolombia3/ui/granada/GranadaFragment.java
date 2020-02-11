@@ -5,8 +5,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -24,6 +22,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import com.example.turismocolombia3.Interfaces.GranadaApi;
+import com.example.turismocolombia3.MapFragment;
 import com.example.turismocolombia3.Modelos.Granada;
 import com.example.turismocolombia3.R;
 import com.example.turismocolombia3.GranadaAdapter;
@@ -44,6 +43,10 @@ public class GranadaFragment extends Fragment {
 
         root = inflater.inflate(R.layout.fragment_granada, container, false);
         bundle = savedInstanceState;
+
+        // Enlazar el layout de mapa (contenedor) con un nuevo MapFragment
+        getFragmentManager().beginTransaction().replace(R.id.map_container,
+                new MapFragment(), "Map Fragment").commit();
 
         recycler_granada = root.findViewById(R.id.recycler_granada);
         recycler_granada.setHasFixedSize(true);
