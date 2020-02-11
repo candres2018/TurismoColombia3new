@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.turismocolombia3.Interfaces.QuipamaApi;
+import com.example.turismocolombia3.MapFragment;
 import com.example.turismocolombia3.Modelos.Quipama;
 import com.example.turismocolombia3.QuipamaAdapter;
 import com.example.turismocolombia3.R;
@@ -47,6 +48,10 @@ public class QuipamaFragment extends Fragment {
 
         root = inflater.inflate(R.layout.fragment_quipama, container, false);
         bundle = savedInstanceState;
+
+        // Enlazar el layout de mapa (contenedor) con un nuevo MapFragment
+        getFragmentManager().beginTransaction().replace(R.id.map_container,
+                new MapFragment(), "Map Fragment").commit();
 
         recycler = root.findViewById(R.id.recycler_quipama);
         recycler.setHasFixedSize(true);
